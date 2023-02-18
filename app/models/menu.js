@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var menuschema=new Schema({
-    day:{type:String,default:""},
-    type:{type:String,default:""},
+    day:{type:Number,default:0},
+    type:{type:Number,default:0},
     menu:{type:Array,default:[]},
     created_at: { type: Date, default: Date.now },
 	updated_at: { type: Date, default: Date.now },
