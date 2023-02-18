@@ -10,5 +10,6 @@ module.exports = function () {
     require('../app/models/restaurants');
     require('../app/models/user');
     require('../app/models/menu');
+    require('../app/models/order');
     return db;
 }
