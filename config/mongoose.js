@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.set('strictQuery', false);
 module.exports = function () {
     var db;
     // mfRMf7Zn9TTMmQpU
@@ -11,5 +12,7 @@ module.exports = function () {
     require('../app/models/user');
     require('../app/models/menu');
     require('../app/models/order');
+    require('../app/models/at_place_charges');
+    require('../app/models/delivery_charges');
     return db;
 }

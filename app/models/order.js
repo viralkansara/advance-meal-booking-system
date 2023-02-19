@@ -9,6 +9,8 @@ var orderschema=new Schema({
     user_id:{type:Schema.Types.ObjectId},
     day:{type:Number,default:0},
     type:{type:Number,default:0},
+    is_delivery:{type:Boolean, default:false},
+    total:{type:Number,defalut:0}
 })
 orderschema.index({background: true});
 module.exports=mongoose.model('order',orderschema);

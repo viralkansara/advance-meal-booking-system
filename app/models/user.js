@@ -8,7 +8,7 @@ var user=new Schema({
     password:{type:String,default:""},
     token:{type:String,default:""},
     address:{type:String,default:""},
-    is_approved:{type:Boolean,default:false}
+    is_approved:{type:Boolean,default:false},
 })
 user.index({email:1},{background:true});
 module.exports=mongoose.model("user",user);
