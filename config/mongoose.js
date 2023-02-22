@@ -14,5 +14,6 @@ module.exports = function () {
     require('../app/models/order');
     require('../app/models/at_place_charges');
     require('../app/models/delivery_charges');
+    require('../app/models/admin_setting');
     return db;
 }

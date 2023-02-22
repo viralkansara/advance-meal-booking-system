@@ -11,5 +11,6 @@ module.exports = function (){
   require("../app/routes/restaurant/restaurant")(app);
   require("../app/routes/user_routes/user")(app);
   require("../app/routes/restaurant/menu")(app);
+  require("../app/routes/admin_routes/admin_setting")(app);
   return app;
 }
