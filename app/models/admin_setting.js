@@ -8,4 +8,4 @@ var admin_setting=new Schema({
     diner_stop_order_time:{type :String ,default: ''},
 })
 admin_setting.index({background: true});
-module.exports=mongoose.model('order',admin_setting);
+module.exports=mongoose.model('admin_setting',admin_setting);

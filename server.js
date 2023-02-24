@@ -3,7 +3,7 @@ const http=require('http');
 express_routes=require('./config/express');
 const app = express_routes();
 cron=require("./cron");
-const cron_job=cron();
+// const cron_job=cron();
 //db connection
 Mongoose=require("./config/mongoose");
 db=Mongoose();

@@ -2,7 +2,9 @@ var user = require("../../models/user").model("user");
 const menu = require("../../models/menu").model("menu");
 var order = require("../../models/order").model("order");
 var delivery_charges=require("../../models/delivery_charges").model("delivery_fee");
+var admin_setting=require('../../models/admin_setting').model("admin_setting");
 var crypto = require("crypto");
+const { query } = require("express");
 exports.user_register = async (req, res) => {
     console.log(req.body)
     try {
@@ -77,6 +79,11 @@ exports.user_place_order = async (req, res) => {
         if (!user_selectes_item) {
             throw new Error('your selected menu not available')
         }
+        //cron for stop order_time
+        if(req.body.type==2){
+            query=
+        }
+        var admin_setting_data=admin_setting.findOne({})
         if(req.body.is_delivery){
             is_delivery=true;
             var get_order_deliver_charge=await delivery_charges.findOne({$and:[{day:req.body.day},{type:req.body.type}]})
