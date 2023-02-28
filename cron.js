@@ -1,16 +1,29 @@
 var cron = require('node-cron');
-exports.stop_order_cron=(hour,minute)=>{
-  var cron_timer_value_set=`${minute} ${hour} * * *`
-  console.log(cron_timer_value_set)
-    var task = cron.schedule(cron_timer_value_set, () =>  {
-      var d = new Date();
-      var n = d.toLocaleTimeString();
-      console.log(n);
-      if(n=="9:21:00"){
-        console.log("hell")
-      }
-      }, {
-        scheduled: false
-      });
-      task.start();
+var admin_setting=require('./app/models/admin_setting').model("admin_setting");
+exports.stop_order_cron=(hour,minute,type)=>{
+  var query;
+    var cron_timer_value_set=`${minute} ${hour} * * *`
+    if(type==2){
+      query={is_lunch_order_stop:true}
+  }
+  else if(type==1){
+      query={is_breakfast_order_stop:true}
+  }
+  else if(type==3){
+      query={is_diner_order_stop:true}
+  }
+      var task = cron.schedule(cron_timer_value_set, async () =>  {
+        var admin_setting_data=await admin_setting.findOneAndUpdate(query);
+        console.log(admin_setting_data)
+        if(!admin_setting_data){
+          return("some proble in run cron job")
+        }
+        else{
+          return("cron run sucessfully")
+        }
+        }, {
+          scheduled: false
+        });
+        task.start();
+ 
 }

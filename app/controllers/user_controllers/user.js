@@ -80,10 +80,12 @@ exports.user_place_order = async (req, res) => {
             throw new Error('your selected menu not available')
         }
         //cron for stop order_time
-        if(req.body.type==2){
-            query=
+        var admin_setting_data=await admin_setting.findOne({});
+        console.log("--admin setting data----");
+        console.log(admin_setting_data);
+        if(admin_setting_data.is_lunch_order_stop){
+            throw new Error('stop time for place order')
         }
-        var admin_setting_data=admin_setting.findOne({})
         if(req.body.is_delivery){
             is_delivery=true;
             var get_order_deliver_charge=await delivery_charges.findOne({$and:[{day:req.body.day},{type:req.body.type}]})
