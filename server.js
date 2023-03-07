@@ -2,8 +2,8 @@ const http=require('http');
 //router file
 express_routes=require('./config/express');
 const app = express_routes();
+//cron job
 cron=require("./cron");
-// const cron_job=cron();
 //db connection
 Mongoose=require("./config/mongoose");
 db=Mongoose();

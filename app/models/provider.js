@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
-var user=new Schema({
+var provider=new Schema({
     frist_name:{type:String,default:""},
     last_name:{type:String,default:""},
     phone:{type:String,default:""},
@@ -8,9 +8,8 @@ var user=new Schema({
     password:{type:String,default:""},
     token:{type:String,default:""},
     address:{type:String,default:""},
-    is_approved:{type:Boolean,default:false},
     created_at: { type: Date, default: Date.now },
 	updated_at: { type: Date, default: Date.now }
 })
-user.index({email:1},{background:true});
-module.exports=mongoose.model("user",user);
+provider.index({email:1},{background:true});
+module.exports=mongoose.model("provider",provider);
